@@ -8,7 +8,7 @@ import android.widget.EditText
 
 class CActivity : AppCompatActivity() {
 
-    var editTextC : EditText? = null
+    var editTextC: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +21,11 @@ class CActivity : AppCompatActivity() {
         editTextC?.setText(extra.getString("TextFromA"))
     }
 
-    override fun onStop() {
-        super.onStop()
-        val intent = Intent(this, BActivity::class.java).apply { putExtra("TextFromC", editTextC?.text.toString()) }
+    override fun finish() {
+        val intent = Intent()
+        intent.putExtra("TextFromC", editTextC?.text.toString())
         setResult(Activity.RESULT_OK, intent)
-        finish()
+
+        super.finish()
     }
 }
